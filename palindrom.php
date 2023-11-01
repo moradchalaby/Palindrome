@@ -1,7 +1,7 @@
 
 <?php
 
-class Polindrom
+class Palindrom
 {
 
     //array_reverse() fonksiyonunda türkçe karakter problemini bu şekilde çözdüm
@@ -12,7 +12,7 @@ class Polindrom
         }
         return join('', array_reverse(mb_str_split($string, 1, $encoding)));
     }
-    public function polindrom_mu($kelime)
+    public function palindrom_mu($kelime)
     {
         mb_internal_encoding('UTF-8');
 
@@ -29,7 +29,7 @@ class Polindrom
 
 
 
-    public function polindrom_paragraf($paragraf)
+    public function palindrom_paragraf($paragraf)
     {
         $kelimeler = explode(' ', $paragraf); //paragrafta ki kelimeleri ayırdım.
         $sonuc = [
@@ -42,8 +42,8 @@ class Polindrom
         for ($i = 0; $i < $kelime_sayisi; $i++) { // Bu döngü bütün kelimeleri kontrol edecek
             $kelime = $kelimeler[$i];
 
-            if ($this->polindrom_mu($kelime) && mb_strlen($kelime, 'UTF-8') > 1) { 
-                $kelime = preg_replace('/[^\p{L}\p{N}\s]/u', '', $kelime); //1 karakterden büyük kelimeleri ve polindrom olan kelimeler seçiliyor
+            if ($this->palindrom_mu($kelime) && mb_strlen($kelime, 'UTF-8') > 1) { 
+                $kelime = preg_replace('/[^\p{L}\p{N}\s]/u', '', $kelime); //1 karakterden büyük kelimeleri ve palindrom olan kelimeler seçiliyor
                 $sonuc['kelime'][] = $kelime;
             }
 
@@ -51,14 +51,14 @@ class Polindrom
                 $kelime .= ' ' . $kelimeler[$j];
 
 
-                if ($this->polindrom_mu($kelime) && mb_strlen($kelimeler[$j], 'UTF-8') > 1) { // 1 karakterden büyük ve polindrom olan kelimedizileri seçiliyor
+                if ($this->palindrom_mu($kelime) && mb_strlen($kelimeler[$j], 'UTF-8') > 1) { // 1 karakterden büyük ve palindrom olan kelimedizileri seçiliyor
                     $kelime = preg_replace('/[^\p{L}\p{N}\s]/u', '', $kelime); 
                     $sonuc['kelimeDizisi'][] = $kelime;
                 }
             }
         }
         if (empty($sonuc['kelime'])) {
-            $sonuc['kelime'] = 'Polindrom Kelime Bulunamadı!';
+            $sonuc['kelime'] = 'Palindrom Kelime Bulunamadı!';
         } else {
        
 
@@ -67,7 +67,7 @@ class Polindrom
             sort($sonuc['kelime']);
         }
         if (empty($sonuc['kelimeDizisi'])) {
-            $sonuc['kelimeDizisi'] = 'Polindrom Kelime Dizisi Bulunamadı!';
+            $sonuc['kelimeDizisi'] = 'Palindrom Kelime Dizisi Bulunamadı!';
         } else {
 
             $sonuc['kelimeDizisi'] = array_unique(array_map('strtolower', $sonuc['kelimeDizisi']));// Tüm elemanları küçük harfe dönüştürüp,Dizideki benzer elemanlar kaldırılıyor
@@ -89,9 +89,9 @@ Palindromları bulmak eğlenceli bir dil oyunudur. 'Kazak' kelimesini tersinden 
 Sonuç olarak, palindromlar Türkçe dilinde de oldukça ilginç ve eğlenceli bir konudur. Dilin yapısı içinde gizli bu tür özellikleri keşfetmek, dilbilgisine olan hakimiyeti artırırken aynı zamanda zekice bir oyun sunar.";
 
 
-$polindrom = new Polindrom();
+$palindrom = new Palindrom();
 
-echo json_encode($polindrom->polindrom_paragraf($paragraf), JSON_UNESCAPED_UNICODE);
+echo json_encode($palindrom->palindrom_paragraf($paragraf), JSON_UNESCAPED_UNICODE);
 ?>
 
 
