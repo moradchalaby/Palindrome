@@ -1,13 +1,13 @@
-# Palindrom Sınıfı
+# Palindrom Bulma Sınıfı
 
 Bu PHP sınıfı, bir kelimenin veya paragraftaki palindrom kelime ve kelime dizilerini bulmanıza olanak sağlar.
 
 ## Kullanım
 
 ```php
-require 'Palindrom.php';
+require 'PalindromBul.php';
 
-$palindrom = new Palindrom();
+$palindrom = new PalindromBul();
 
 // Tek bir kelimenin palindrom olup olmadığını kontrol etmek için
 $is_palindrome = $palindrom->palindrom_mu("ana");

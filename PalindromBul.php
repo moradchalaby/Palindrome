@@ -1,7 +1,7 @@
 
 <?php
 
-class Palindrom
+class PalindromBul
 {
 
     //array_reverse() fonksiyonunda türkçe karakter problemini bu şekilde çözdüm
