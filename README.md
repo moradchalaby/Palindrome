@@ -33,5 +33,8 @@ Verilen paragraftaki palindrom kelimeleri ve kelime dizilerini bulur.
 
 
 ```$paragraf```: Palindrom aranacak paragraf.
+## Katkıda Bulunma;
+
+Eğer projeye katkıda bulunmak isterseniz, lütfen bir çekme isteği gönderin.
 ## Lisans
 Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için [LİSANS](LICENSE) dosyasına göz atın.
